@@ -4,16 +4,15 @@ sleep 1
 puts "Ответьте, пожалуйста на следующие вопросы: (варианты ответа: y(es), n(o), s(ometimes)"
 
 questions_from_file = File.new("#{__dir__}/data/questions.txt", "r:UTF-8").readlines
-results_from_files = File.new("#{__dir__}/data/results.txt", "r:UTF-8").readlines
+results_from_file = File.new("#{__dir__}/data/results.txt", "r:UTF-8").readlines
 
-test = Test.new(questions_from_file, results_from_files)
+test = Test.new(questions_from_file, results_from_file)
 questions = test.questions
-#balls = test.ball_answers
 
 questions.each do |item|
   puts item
-  # user_input = nil
   user_input = STDIN.gets.chomp
+
   while user_input != "y" && user_input != "n" && user_input != "s"
     puts "Введите y(es), n(o), или s(ometimes)"
     user_input = STDIN.gets.chomp.downcase
@@ -40,5 +39,3 @@ end
 
 puts "Вы набрали #{test.ball_answers} баллов"
 puts test.calculate_results(test.ball_answers)
-
-

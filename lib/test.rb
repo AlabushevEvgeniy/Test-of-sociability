@@ -1,5 +1,5 @@
 class Test
-  attr_reader :ball_answers, :questions
+  attr_reader :ball_answers, :questions, :results_array
 
   def initialize(questions_from_files, results_from_files)
     @questions = questions_from_files
@@ -7,8 +7,7 @@ class Test
     @ball_answers = 0
   end
 
-  # да - 2 балла, нет - 0 баллов, иногда - 1
-  def calculate_results(ball_answers)
+  def calculate_results(balls)
     if ball_answers >= 30
       @results_array[0]
     elsif ball_answers >= 25 and ball_answers <= 29
@@ -27,7 +26,7 @@ class Test
   end
 
   def reverse_logic_item?(item)
-    (item == questions[4] || item == questions[9] || item == questions[10])
+    item == questions[4] || item == questions[9] || item == questions[10]
   end
 
   def add_balls(number)
